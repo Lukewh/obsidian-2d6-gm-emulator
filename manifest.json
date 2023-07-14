@@ -1,0 +1,11 @@
+{
+  "id": "traveller-gm-emulator",
+  "name": "2d6 Game Master Emulator",
+  "version": "0.0.1",
+  "minAppVersion": "1.3.5",
+  "description": "A basic Game Master Emulator for 2d6 systems like Traveller and Cepheus Engine",
+  "author": "Lukewh",
+  "authorUrl": "https://lukewh.com",
+  "fundingUrl": "https://ko-fi.com/lukewh",
+  "isDesktopOnly": false
+}
