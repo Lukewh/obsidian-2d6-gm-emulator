@@ -42,22 +42,21 @@ export const roll = (mod = 0): number => {
 };
 
 export const question = (
-  likelihood: LIKELIHOOD,
+  likelihood = LIKELIHOOD.FIFTY_FIFTY,
   fn: (mod: number) => ReturnString
 ): ReturnString => {
-  likelihood = likelihood || "50/50";
-  switch (likelihood.toLowerCase()) {
-    case "impossible":
+  switch (likelihood) {
+    case LIKELIHOOD.IMPOSSIBLE:
       return fn(-40);
-    case "very unlikely":
+    case LIKELIHOOD.VERY_UNLIKELY:
       return fn(-20);
-    case "unlikely":
+    case LIKELIHOOD.UNLIKELY:
       return fn(-10);
-    case "likely":
+    case LIKELIHOOD.LIKELY:
       return fn(10);
-    case "very likely":
+    case LIKELIHOOD.VERY_LIKELY:
       return fn(20);
-    case "a sure thing":
+    case LIKELIHOOD.A_SURE_THING:
       return fn(40);
     default:
       return fn(0);
