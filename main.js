@@ -53,20 +53,19 @@ var roll = (mod = 0) => {
   }
   return rolled;
 };
-var question = (likelihood, fn) => {
-  likelihood = likelihood || "50/50";
-  switch (likelihood.toLowerCase()) {
-    case "impossible":
+var question = (likelihood = "4. Fifty/Fifty" /* FIFTY_FIFTY */, fn) => {
+  switch (likelihood) {
+    case "1. Impossible" /* IMPOSSIBLE */:
       return fn(-40);
-    case "very unlikely":
+    case "2. Very unlikely" /* VERY_UNLIKELY */:
       return fn(-20);
-    case "unlikely":
+    case "3. Unlikely" /* UNLIKELY */:
       return fn(-10);
-    case "likely":
+    case "5. Likely" /* LIKELY */:
       return fn(10);
-    case "very likely":
+    case "6. Very likely" /* VERY_LIKELY */:
       return fn(20);
-    case "a sure thing":
+    case "7. A sure thing" /* A_SURE_THING */:
       return fn(40);
     default:
       return fn(0);
