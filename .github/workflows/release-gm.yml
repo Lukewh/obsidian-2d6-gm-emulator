@@ -1,9 +1,9 @@
 name: Release GM Emulator plugin
 
 on:
-  push:
-    tags:
-      - "*"
+  release:
+    types:
+      - published
 
 jobs:
   build:
@@ -22,13 +22,27 @@ jobs:
           npm install
           npm run build
 
-      - name: Create release
+      - name: Get release URL
+        run: |
+          upload_url=$(curl -sL https://api.github.com/repos/Lukewh/obsidian-2d6-gm-emulator/releases/latest | jq -r '.upload_url')
+          echo UPLOAD_URL=$upload_url >> $GITHUB_ENV
+
+      - name: Upload Main
+        uses: actions/upload-release-assets@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          tag="${GITHUB_REF#refs/tags/}"
+        with:
+          upload_url: ${{ env.UPLOAD_URL }}
+          asset_path: ./main.js
+          asset_name: main.js
+          asset_content_type: application/javascript
 
-          gh release create "$tag" \
-            --title="$tag" \
-            --draft \
-            main.js manifest.json
+      - name: Upload Manifest
+        uses: actions/upload-release-assets@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ env.UPLOAD_URL }}
+          asset_path: ./manifest.json
+          asset_name: manifest.json
+          asset_content_type: application/json
