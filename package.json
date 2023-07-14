@@ -1,6 +1,6 @@
 {
   "name": "obsidian-2d6-gm-emulator",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "2d6 Game Master Emulator - For TTRPGs like Traveller or Cepheus Engine",
   "main": "index.js",
   "scripts": {
