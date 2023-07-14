@@ -4,7 +4,7 @@ For TTRPGs like Traveller or Cepheus Engine.
 
 ## Usage
 
-![gif of emulator](../.github/gm-emulator.gif)
+![gif of emulator](.github/gm-emulator.gif)
 
 ## Features
 
